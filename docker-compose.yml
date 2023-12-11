@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "1313:1313"
+    volumes:
+      - ./server:/app/server
+    environment:
+      - FLASK_ENV=development
+    command: python ./server/server.py
