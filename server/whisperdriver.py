@@ -21,6 +21,7 @@ def whisper_transcribe(audio_path):
 
     # Transcribe the audio
     result = model.transcribe(audio_path)
+    print(result["text"])
 
     # os.remove(audio_path)
 
@@ -35,7 +36,8 @@ def worker():
 
 
 def start_transcription_task(video_path):
-    task_queue.put(video_path)
+    whisper_transcribe(video_path)
+   #  task_queue.put(video_path)
 
 
 if __name__ == "whisper":
