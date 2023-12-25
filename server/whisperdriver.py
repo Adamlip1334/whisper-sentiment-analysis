@@ -1,5 +1,5 @@
 from multiprocessing import Pool, Queue
-from whisper import whisper_transcribe
+import whisper
 import os
 
 # Initialize a queue for tasks
@@ -10,19 +10,20 @@ num_workers = 4  # Adjust based on your server's capability
 def whisper_transcribe(audio_path):
     """
     The `whisper_transcribe` function transcribes audio using the Whisper model.
-    
+
     :param audio_path: The audio_path parameter is the path to the audio file that you want to
     transcribe. It should be a string representing the file path, including the file name and extension
     :return: the transcribed text from the audio file.
     """
 
     # Load the Whisper model
-    model = whisper.load_model("tiny")  # tiny, base, small, medium, or large
+    model = whisper.load_model('base')  # tiny, base, small, medium, or large
 
     # Transcribe the audio
     result = model.transcribe(audio_path)
+    print(result["text"])
 
-    os.remove(audio_path)
+    # os.remove(audio_path)
 
     return result["text"]
 
@@ -33,8 +34,11 @@ def worker():
         transcription = whisper_transcribe(video_path)
         # TODO: Store or send transcription
 
-def start_transcription_task(video_path):
-    task_queue.put(video_path)
 
-if __name__ == 'whisper':
+def start_transcription_task(video_path):
+    whisper_transcribe(video_path)
+   #  task_queue.put(video_path)
+
+
+if __name__ == "whisper":
     pool = Pool(num_workers, worker)
