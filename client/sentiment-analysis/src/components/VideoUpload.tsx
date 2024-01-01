@@ -31,7 +31,7 @@ const VideoUpload: React.FC = () => {
         const data = await response.json();
 
         if (response.ok) {
-          setTranscript(data.transcript); // Set the transcript in state
+          setTranscript(data.transcript); 
         } else {
           alert("Failed to upload the video.");
         }
