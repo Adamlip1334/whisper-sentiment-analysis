@@ -9,7 +9,7 @@ const SignInPage: React.FC = () => {
     const handleSignIn = async () => {
       try {
         await signInWithGoogle();
-        navigate('/'); // Redirect to homepage after successful sign-in
+        navigate('/'); 
       } catch (error) {
         console.error("Error during sign-in:", error);
       }
