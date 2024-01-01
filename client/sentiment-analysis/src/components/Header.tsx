@@ -17,7 +17,6 @@ const Header: React.FC = () => {
   }, []);
 
   const handleLogout = async () => {
-    auth.signOut(); // Firebase sign out
     try {
       await auth.signOut(); // Firebase sign out
       navigate('/'); 
