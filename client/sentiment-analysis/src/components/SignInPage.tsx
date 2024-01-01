@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase/firebase'; // Adjust this path to your Firebase config file
-import { signInWithGoogle } from '../firebase/firebaseUtils'; // Adjust this path to your sign-in utility
-import styles from '../styles/SignInPage.module.css'; // Adjust this path to your CSS module
+import { signInWithGoogle } from '../firebase/firebaseUtils';
+import styles from '../styles/SignInPage.module.css'; 
 
 const SignInPage: React.FC = () => {
     const navigate = useNavigate();
